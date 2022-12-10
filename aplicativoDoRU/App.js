@@ -1,12 +1,12 @@
 import React, { useState, useEffect} from 'react';
 import {View, Text, StyleSheet} from 'react-native';
 
-import Login from './src/login';
+import Home from './src/pages/home';
 
 export default function App(){
   return(
     <View style={styles.container}>
-      <Login/>
+      <Home/>
     </View>
 
   )

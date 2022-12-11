@@ -36,14 +36,14 @@ export default function Home(){
                     </View>
                     <View style={styles.areadoextratoeinformaçoes}>
                         <TouchableOpacity style={styles.botaoextrato}>
-                            <Text style={{marginTop:'4%',}}>Extratos</Text>
+                            <Text style={{marginTop:'4%', fontSize:15}}>Extratos</Text>
                             <View style={{marginTop:'4.5%'}}>
                                 <Octicons name="checklist" size={34} color="green" />
                             </View>
                             
                         </TouchableOpacity>
                         <TouchableOpacity style={styles.botaoinformaçoes}>
-                            <Text style={{marginTop:'4%',}} >Informações</Text>
+                            <Text style={{marginTop:'4%', fontSize:15}} >Informações</Text>
                             <View>
                                 <Ionicons name="ios-information-circle-outline" size={45} color="green"/>
                             </View>

@@ -1,12 +1,18 @@
 import React, {useState} from 'react';
-import {View, Text, StyleSheet, TextInput,TouchableOpacity} from 'react-native';
-import Rangando from './../assets/rangando.svg';
+import {View, Text, StyleSheet, TextInput,TouchableOpacity, Alert} from 'react-native';
+import Rangando from './../../../assets/rangando.svg';
 import Ionicons from 'react-native-vector-icons/Ionicons';
-
+import { useNavigation } from '@react-navigation/native';
 
 export default function Login(){
     const [matricula, setMatricula] = useState('')
     const [bloqueado, setBloqueado] = useState(true); 
+
+    const navigation = useNavigation();
+
+    function irParaHome(){
+      navigation.navigate('Home');
+    }
 
     return(
       <View style={styles.container}>
@@ -34,7 +40,7 @@ export default function Login(){
                 }
               </TouchableOpacity>
             </View>
-            <TouchableOpacity style={styles.entrar}>
+            <TouchableOpacity style={styles.entrar} onPress={irParaHome}>
                 <Text style={{color:'#000', fontSize:15}}>Entrar</Text>
             </TouchableOpacity>
             <TouchableOpacity>

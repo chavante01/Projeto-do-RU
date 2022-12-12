@@ -4,24 +4,42 @@ import Octicons from 'react-native-vector-icons/Octicons';
 import Ionicons from 'react-native-vector-icons/Ionicons';
 import MaterialCommunityIcons  from 'react-native-vector-icons/MaterialCommunityIcons';
 import LinearGradient from 'react-native-linear-gradient';
-
+import { useNavigation } from '@react-navigation/native';
 
 export default function Home(){ 
+        
+        const navigation = useNavigation();
+
+        function irParaExtratos(){
+            navigation.navigate('Extratos');
+        }
+
+        function irParaInformaçoes(){
+            navigation.navigate('Informaçoes');
+        }
+
+        function sairDoApp(){
+            navigation.navigate('Login');
+        }
+
+        function IrParaComprar(){
+            navigation.navigate('Comprar');
+        }
 
         return(
             <View style={styles.container}>
                 <LinearGradient colors={['#008000','#70e000']} start={{x:0, y:0}} style={styles.estilodogradiente}>
                     <TouchableOpacity style={{marginTop:'-15%',marginLeft:'2%'}} >
-                        <Image source={require('./../../assets/user.jpg')} style={styles.fotodeperfil}/>
+                        <Image source={require('./../../../assets/user.jpg')} style={styles.fotodeperfil}/>
                     </TouchableOpacity>
                     <View style={{flexDirection:'column',justifyContent:'center',width:'50%', height:'100%'}}>
                         <Text style={styles.nomedoestudante}>Lucas Chavante</Text>
-                        <TouchableOpacity style={styles.botaodepositar}>
+                        <TouchableOpacity style={styles.botaodepositar} onPress={IrParaComprar}>
                             <Text style={{fontSize:15, color:'#fcfcfc'}}>Comprar</Text>
                         </TouchableOpacity>
                     </View>
                     <View style={{height:'100%',width:'20%',alignItems:'flex-end'}}>
-                        <TouchableOpacity style={styles.botaologout}>
+                        <TouchableOpacity style={styles.botaologout} onPress={sairDoApp}>
                             <MaterialCommunityIcons name="logout" size={30} color="#fcfcfc"/>
                         </TouchableOpacity>
                     </View>
@@ -35,14 +53,13 @@ export default function Home(){
                         </View>    
                     </View>
                     <View style={styles.areadoextratoeinformaçoes}>
-                        <TouchableOpacity style={styles.botaoextrato}>
+                        <TouchableOpacity style={styles.botaoextrato} onPress={irParaExtratos}>
                             <Text style={{marginTop:'4%', fontSize:15}}>Extratos</Text>
                             <View style={{marginTop:'4.5%'}}>
                                 <Octicons name="checklist" size={34} color="green" />
                             </View>
-                            
                         </TouchableOpacity>
-                        <TouchableOpacity style={styles.botaoinformaçoes}>
+                        <TouchableOpacity style={styles.botaoinformaçoes} onPress={irParaInformaçoes}>
                             <Text style={{marginTop:'4%', fontSize:15}} >Informações</Text>
                             <View>
                                 <Ionicons name="ios-information-circle-outline" size={45} color="green"/>

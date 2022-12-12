@@ -1,27 +1,32 @@
-import React, { useState, useEffect} from 'react';
-import {View, Text, StyleSheet} from 'react-native';
+import 'react-native-gesture-handler';
+import React from 'react';
 import { NavigationContainer } from '@react-navigation/native';
-import { createNativeStackNavigator } from '@react-navigation/native-stack';
-import Home from './src/pages/home';
-import Login from'./src/pages/login';
+import { createStackNavigator } from '@react-navigation/stack';
 
-const Stack = createNativeStackNavigator();
+import Home from './src/pages/Home';
+import Login from './src/pages/Login';
+import Extratos from './src/pages/Extratos';
+import Informaçoes from './src/pages/Informaçoes';
+import Comprar from './src/pages/Comprar';
+
+const Stack = createStackNavigator();
 
 export default function App(){
   return(
-    <NavigationContainer>
-      <Stack.Navigator>
-        <Stack.Screen name="Login" component={Login} />
-        <Stack.Screen name="Home" component={Home} />
-      </Stack.Navigator>  
-    </NavigationContainer>
 
-  )
+    <NavigationContainer>
+      <Stack.Navigator initialRouteName='Login'>
+        <Stack.Screen name="Home" component={Home} options={{
+          headerShown:false,}}/>
+        <Stack.Screen name="Extratos" component={Extratos} />
+        <Stack.Screen name="Informaçoes" component={Informaçoes}/>
+        <Stack.Screen name="Comprar" component={Comprar}/>
+        <Stack.Screen  name="Login" component={Login} options={{
+          headerShown:false,}}/>
+      </Stack.Navigator>
+    </NavigationContainer>
+    
+  );
 }
 
-const styles = StyleSheet.create({
-  container:{
-    flex:1,
-  }
 
-});

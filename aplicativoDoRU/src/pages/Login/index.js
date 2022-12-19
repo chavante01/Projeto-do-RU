@@ -14,6 +14,10 @@ export default function Login(){
       navigation.navigate('Home');
     }
 
+    function criarCadastro(){
+      navigation.navigate('Cadastro');
+    }
+
     return(
       <View style={styles.container}>
         <Rangando width={200} height={200}/>
@@ -43,9 +47,14 @@ export default function Login(){
             <TouchableOpacity style={styles.entrar} onPress={irParaHome}>
                 <Text style={{color:'#000', fontSize:15}}>Entrar</Text>
             </TouchableOpacity>
-            <TouchableOpacity>
-              <Text style={{color:'#000', fontSize:15}}>Esqueceu a senha?</Text>
-            </TouchableOpacity>   
+            <View style={styles.cadastramento}>
+              <TouchableOpacity styles={{margin:10}}>
+                <Text style={{color:'#000', fontSize:15}}>Esqueceu a senha?</Text>
+              </TouchableOpacity>
+              <TouchableOpacity onPress={criarCadastro}>
+                <Text style={{color:'#000', fontSize:15}}>Faça seu cadastro!!!</Text>
+              </TouchableOpacity>  
+            </View>        
         </View> 
 
       </View>
@@ -76,7 +85,7 @@ export default function Login(){
       borderRadius:5,
     },
     senhaArea:{
-      marginTop: 2, 
+      marginTop: 10, 
       flexDirection:'row',
       width:'90%',
       height:50,
@@ -96,11 +105,19 @@ export default function Login(){
     entrar:{
       alignItems:'center',
       justifyContent:'center',
-      marginTop:3,
+      marginTop:5,
       width:'90%',
       height:50,
       backgroundColor:'#51ad72',
       borderRadius:5,
     },
+    cadastramento:{
+      flexDirection:'row',
+      justifyContent:'space-around',
+      marginTop:10,
+      width:'100%',
+      
+
+    }
     
   });

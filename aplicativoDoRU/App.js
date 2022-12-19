@@ -8,12 +8,12 @@ import Login from './src/pages/Login';
 import Extratos from './src/pages/Extratos';
 import Informaçoes from './src/pages/Informaçoes';
 import Comprar from './src/pages/Comprar';
+import Cadastro from './src/pages/Cadastro';
 
 const Stack = createStackNavigator();
 
 export default function App(){
   return(
-
     <NavigationContainer>
       <Stack.Navigator initialRouteName='Login'>
         <Stack.Screen name="Home" component={Home} options={{
@@ -23,6 +23,8 @@ export default function App(){
         <Stack.Screen name="Comprar" component={Comprar}/>
         <Stack.Screen  name="Login" component={Login} options={{
           headerShown:false,}}/>
+        <Stack.Screen name="Cadastro" component={Cadastro} options={{
+          headerShown:false,}}/> 
       </Stack.Navigator>
     </NavigationContainer>
     

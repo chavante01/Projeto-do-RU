@@ -1,27 +1,49 @@
 import React, {useState} from 'react';
 import {View, Text, StyleSheet, TextInput, TouchableOpacity} from 'react-native';
 import Register from './../../../assets/register.svg';
+import api from './../services/api';
 
 export default function Cadastro(){
+
+    const [nome, setNome] = useState('');
+    const [sobrenome, setSobrenome] = useState('');
+    const [matricula, setMatricula] = useState('');
+    const [senha, setSenha] = useState('');
+    const [confirm, setConfirm] = useState('');
+
+    function cadastrar(){
+        if(senha != confirm){
+            alert("Senha escrita de forma incorreta!!!")
+        }else{
+            api.post('/cadastrar',{
+                nome:nome,
+                sobrenome: sobrenome,
+                matricula: matricula,
+                senha: senha
+            })
+            .then(function (response) {
+                alert(response.data.content);
+            })
+            .catch(function (error) {
+                alert(error.data.content);
+            });
+        }  
+    }
+
     return(
         <View style={styles.container}>
             <Register width={200} height={200}/>
-            <TextInput style={styles.input} placeholder='Nome'>
-                <Text></Text>
-            </TextInput>
-            <TextInput style={styles.input} placeholder='Sobrenome'>
-                <Text></Text>
-            </TextInput>
-            <TextInput style={styles.input} placeholder='Número de matrícula'>
-                <Text></Text>
-            </TextInput>
-            <TextInput style={styles.input} placeholder='Senha'>
-                <Text></Text>
-            </TextInput>
-            <TextInput style={styles.input} placeholder='Confirme a senha'>
-                <Text></Text>
-            </TextInput>
-            <TouchableOpacity style={styles.button}>
+            <TextInput style={styles.input} placeholder='Nome' onChangeText={(text) => setNome(text)}/>
+                
+            <TextInput style={styles.input} placeholder='Sobrenome' onChangeText={(text) => setSobrenome(text)}/>
+                
+            <TextInput style={styles.input} placeholder='Matrícula' onChangeText={(text) => setMatricula(text)}/>
+             
+            <TextInput style={styles.input} placeholder='Senha' onChangeText={(text) => setSenha(text)}/>
+                
+            <TextInput style={styles.input} placeholder='Confirme a senha' onChangeText={(text) => setConfirm(text)}/>
+                
+            <TouchableOpacity style={styles.button} onPress={cadastrar}>
                 <Text style={{color:'#000'}}> Criar Conta</Text>
             </TouchableOpacity>
         </View>

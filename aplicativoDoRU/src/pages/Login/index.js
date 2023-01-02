@@ -3,14 +3,26 @@ import {View, Text, StyleSheet, TextInput,TouchableOpacity, Alert} from 'react-n
 import Rangando from './../../../assets/rangando.svg';
 import Ionicons from 'react-native-vector-icons/Ionicons';
 import { useNavigation } from '@react-navigation/native';
+import api from './../services/api';
 
 export default function Login(){
-    const [matricula, setMatricula] = useState('')
+    const [matricula, setMatricula] = useState('');
+    const [senha, setSenha] = useState('');
     const [bloqueado, setBloqueado] = useState(true); 
-
     const navigation = useNavigation();
 
     function irParaHome(){
+      api.post('/login',{
+        matricula: matricula,
+        senha: senha
+      })
+      .then(function (response) {
+        alert(response.data.nome);
+      })
+      .catch(function (error) {
+        alert(error.data.nome);
+      });
+
       navigation.navigate('Home');
     }
 
@@ -28,6 +40,7 @@ export default function Login(){
               <TextInput
               style={styles.input}
               placeholder='número de matrícula'
+              onChangeText={(texto) => setMatricula(texto)}
               />
             </View>
 
@@ -35,6 +48,7 @@ export default function Login(){
               <TextInput style={styles.input}
               placeholder='senha'
               secureTextEntry={bloqueado}
+              onChangeText={(texto) => setSenha(texto)}
               />
               <TouchableOpacity style={styles.icone} onPress={(() => setBloqueado(!bloqueado))}>
                 {bloqueado?

@@ -49,7 +49,7 @@ export default function Home(){
                         <Text style={{fontSize:20, marginTop:'3%'}}>Seu saldo</Text>
                         <View style={{flexDirection:'row',alignItems:'center', marginTop:'5%'}}>
                             <Text style={{fontSize:15,marginRight:'1%'}}>R$</Text>
-                            <Text style={{fontSize:50}}>60</Text>
+                            <Text style={{fontSize:50}}>15</Text>
                         </View>    
                     </View>
                     <View style={styles.areadoextratoeinformaçoes}>

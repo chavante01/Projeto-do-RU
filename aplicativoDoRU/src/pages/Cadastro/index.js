@@ -1,7 +1,7 @@
 import React, {useState} from 'react';
 import {View, Text, StyleSheet, TextInput, TouchableOpacity} from 'react-native';
 import Register from './../../../assets/register.svg';
-import api from './../services/api';
+import api from './../services/api.js';
 
 export default function Cadastro(){
 

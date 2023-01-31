@@ -12,18 +12,30 @@ export default function Login(){
     const navigation = useNavigation();
 
     function irParaHome(){
-      api.post('/login',{
-        matricula: matricula,
-        senha: senha
-      })
-      .then(function (response) {
-        alert(response.data.nome);
-      })
-      .catch(function (error) {
-        alert(error.data.nome);
-      });
+      var axios = require("axios").default;
 
-      navigation.navigate('Home');
+      var options = {
+        method: 'POST',
+        url: 'http://18.206.54.38:3005/logEstudantes',
+        headers: {'Content-Type': 'application/json'},
+        data: {numeroMatricula: matricula, senha: senha}
+      };
+      
+      axios.request(options).then(function (response) {
+        if (response.data != "logado" ){
+          //console.log("deu merda");
+          console.log(response.data);
+          alert(response.data);
+          
+        }
+        else{
+          navigation.navigate('Home');
+          console.log(response.data);
+        }
+        //console.log(response.data);
+      }).catch(function (error) {
+        console.error(error);
+      });
     }
 
     function criarCadastro(){

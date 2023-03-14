@@ -1,4 +1,4 @@
-import React, {useState} from 'react';
+import React, {useState, useEffect} from 'react';
 import { View, Text, ImageBackground, TouchableOpacity , StyleSheet, Image } from 'react-native';
 import Octicons from 'react-native-vector-icons/Octicons';
 import Ionicons from 'react-native-vector-icons/Ionicons';
@@ -7,8 +7,23 @@ import LinearGradient from 'react-native-linear-gradient';
 import { useNavigation } from '@react-navigation/native';
 import axios from 'axios';
 
-export default function Home(){ 
+export default function Home({route}){ 
+    var { matricula, senha } = route.params;
+    var [nome, setNome] = useState('');
+    var [saldo, setSaldo] = useState('');
+    useEffect(() => {
         
+        axios.get(`http://10.0.0.151:3005/estudante/${matricula}`)
+
+        .then(response => {
+          setNome(response.data.nome);
+          setSaldo(response.data.saldo);
+          console.log(`Nome: ${response.data.nome}, Saldo: ${response.data.saldo}`);
+        })
+        .catch(error => {
+          console.error(error);
+        });
+    }, [matricula]);
         const navigation = useNavigation();
 
         function irParaExtratos(){
@@ -26,8 +41,6 @@ export default function Home(){
         function IrParaComprar(){
             navigation.navigate('Comprar');
         }
-
-        const [saldo, setSaldo] = useState('');
         return(
             <View style={styles.container}>
                 <LinearGradient colors={['#008000','#70e000']} start={{x:0, y:0}} style={styles.estilodogradiente}>
@@ -35,7 +48,7 @@ export default function Home(){
                         <Image source={require('./../../../assets/user.jpg')} style={styles.fotodeperfil}/>
                     </TouchableOpacity>
                     <View style={{flexDirection:'column',justifyContent:'center',width:'50%', height:'100%'}}>
-                        <Text style={styles.nomedoestudante}>Lucas Chavante</Text>
+                        <Text style={styles.nomedoestudante}>{nome}</Text>
                         <TouchableOpacity style={styles.botaodepositar} onPress={IrParaComprar}>
                             <Text style={{fontSize:15, color:'#fcfcfc'}}>Comprar</Text>
                         </TouchableOpacity>

@@ -28,7 +28,7 @@ export default function Login(){
           
         }
         else{
-          navigation.navigate('Home');
+          navigation.navigate('Home', {matricula, senha});
           console.log(response.data);
         }
         //console.log(response.data);

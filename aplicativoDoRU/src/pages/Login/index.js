@@ -3,7 +3,6 @@ import {View, Text, StyleSheet, TextInput,TouchableOpacity, Alert} from 'react-n
 import Rangando from './../../../assets/rangando.svg';
 import Ionicons from 'react-native-vector-icons/Ionicons';
 import { useNavigation } from '@react-navigation/native';
-import api from './../services/api';
 
 export default function Login(){
     const [matricula, setMatricula] = useState('');

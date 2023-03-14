@@ -13,7 +13,7 @@ export default function Home({route}){
     var [saldo, setSaldo] = useState('');
     useEffect(() => {
         
-        axios.get(`http://10.0.0.151:3005/estudante/${matricula}`)
+        axios.get(`http://18.206.54.38:3005/estudante/${matricula}`)
 
         .then(response => {
           setNome(response.data.nome);

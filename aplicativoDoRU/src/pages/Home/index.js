@@ -5,6 +5,7 @@ import Ionicons from 'react-native-vector-icons/Ionicons';
 import MaterialCommunityIcons  from 'react-native-vector-icons/MaterialCommunityIcons';
 import LinearGradient from 'react-native-linear-gradient';
 import { useNavigation } from '@react-navigation/native';
+import axios from 'axios';
 
 export default function Home(){ 
         
@@ -26,6 +27,7 @@ export default function Home(){
             navigation.navigate('Comprar');
         }
 
+        const [saldo, setSaldo] = useState('');
         return(
             <View style={styles.container}>
                 <LinearGradient colors={['#008000','#70e000']} start={{x:0, y:0}} style={styles.estilodogradiente}>
@@ -49,7 +51,7 @@ export default function Home(){
                         <Text style={{fontSize:20, marginTop:'3%'}}>Seu saldo</Text>
                         <View style={{flexDirection:'row',alignItems:'center', marginTop:'5%'}}>
                             <Text style={{fontSize:15,marginRight:'1%'}}>R$</Text>
-                            <Text style={{fontSize:50}}>15</Text>
+                            <Text style={{fontSize:50}}>{saldo}</Text>
                         </View>    
                     </View>
                     <View style={styles.areadoextratoeinformaçoes}>
